@@ -1,30 +1,28 @@
 #include <iostream>
+
 using namespace std;
+
 int main()
 {
 	setlocale(LC_ALL, "ru");
 	int x;
-	int a, b, c;
+	int a, b, c, t;
 	bool F = false;
 	cout << "Введите трёхзначное число: ";
 	cin >> x;
-	while ((x < 100) || (x > 999))
-		cin >> x;
 	a = x % 10;
-	x = x / 10;
-	b = x % 10;
-	c = x / 10;
-	while (F == false)
-		if ((a == b) || (a == c) || (b == c))
-		{
-			cout << "Число не удовлетворяет условию, введите новое: ";
-			cin >> x;
-			a = x % 10;
-			x = x / 10;
-			b = x % 10;
-			c = x / 10;
-		}
-		else F = true;
+	t = x / 10;
+	b = t % 10;
+	c = t / 10;
+	while (((x<100) || (x>999)) || ((a==b) || (a==c) || (b==c)))
+	{
+		cout << "Число не удовлетворяет условию, введите новое: ";
+		cin >> x;
+		a = x % 10;
+		t = x / 10;
+		b = t % 10;
+		c = t / 10;
+	}
 	cout << a << b << c << endl;
 	cout << a << c << b << endl;
 	cout << b << a << c << endl;
