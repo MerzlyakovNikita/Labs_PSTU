@@ -7,14 +7,16 @@ int main()
 	setlocale(LC_ALL, "ru");
 	int x;
 	int a, b, c, t;
-	bool F = false;
 	cout << "Введите трёхзначное число: ";
 	cin >> x;
 	a = x % 10;
 	t = x / 10;
 	b = t % 10;
 	c = t / 10;
-	while (((x<100) || (x>999)) || ((a==b) || (a==c) || (b==c)))
+	bool flag1 = x < 100 || x > 999;
+	bool flag2 = a == b || a == c || b == c;
+	bool flag = flag1 || flag2;
+	while (flag)
 	{
 		cout << "Число не удовлетворяет условию, введите новое: ";
 		cin >> x;
@@ -22,6 +24,9 @@ int main()
 		t = x / 10;
 		b = t % 10;
 		c = t / 10;
+		flag1 = x < 100 || x > 999;
+		flag2 = a == b || a == c || b == c;
+		flag = flag1 || flag2;
 	}
 	cout << a << b << c << endl;
 	cout << a << c << b << endl;
